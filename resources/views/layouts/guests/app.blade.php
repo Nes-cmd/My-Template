@@ -12,8 +12,8 @@
       href="assets/images/favicon.png"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="css/animate.css" />
-    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="guest/animate.css" />
+    <link rel="stylesheet" href="guest/app.css" />
     
 
     <!-- ==== WOW JS ==== -->

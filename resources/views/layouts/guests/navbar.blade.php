@@ -9,7 +9,7 @@
         z-40
         w-full
         flex
-        items-center
+        items-center 
       "
      >
       <div class="container">
@@ -314,23 +314,10 @@
                 </ul>
               </nav>
             </div>
-            <div class="sm:flex justify-end hidden pr-16 lg:pr-0">
+            
+            <div class="sm:flex justify-end pr-16 lg:pr-0">
               <a
-                href="{{route('login')}}"
-                class="
-                  text-base
-                  font-medium
-                  text-white
-                  hover:opacity-70
-                  py-3
-                  px-7
-                  loginBtn
-                "
-              >
-                Sign In
-              </a>
-              <a
-                href="{{ route('register')}}"
+                href="{{ route('login')}}"
                 class="
                   text-base
                   font-medium
@@ -345,7 +332,7 @@
                   ease-in-out
                 "
               >
-                Sign Up
+                Sign In
               </a>
             </div>
           </div>
