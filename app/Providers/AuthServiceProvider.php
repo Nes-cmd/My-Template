@@ -25,6 +25,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('manage-finance', function(){
+            return auth()->user()->hasRole('admin');
+        });
         //
     }
 }

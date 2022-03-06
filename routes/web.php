@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::view('home', 'dashboard')->middleware('auth')->name('dashboard.main');
+Route::view('/dashboard', 'dashboard')->middleware('auth')->name('dashboard.main');
 
 Route::view('/','landing')->name('landing');
 Route::view('pricing', 'pages.pricing')->name('pricing');
@@ -47,10 +47,6 @@ Route::middleware('auth')->group(function(){
     Route::view('users-tabs', 'mosaic.users-tabs')->name('community.users-tabs');
     Route::view('users-tiles', 'mosaic.user-tiles')->name('community.users-tiles');
 
-    Route::view('credit-cards', 'mosaic.credit-cards')->name('finance.cards');
-    Route::view('transaction-details', 'mosaic.transaction-details')->name('finance.details');
-    Route::view('transactions', 'mosaic.transactions')->name('finance.transactions');
-
     Route::view('messages', 'mosaic.messages')->name('messages');
     Route::view('tasks', 'mosaic.tasks')->name('tasks');
     Route::view('inbox', 'mosaic.inbox')->name('inbox');
@@ -74,11 +70,13 @@ Route::middleware('auth')->group(function(){
     Route::view('onboarding-02', 'mosaic.onboarding-02')->name('onboarding.step2');
     Route::view('onboarding-03', 'mosaic.onboarding-03')->name('onboarding.step3');
     Route::view('onboarding-04', 'mosaic.onboarding-04')->name('onboarding.step4');
-    
-    Route::view('reset-password', 'mosaic.reset-password')->name('auth.reset-password');
-    Route::view('signin', 'mosaic.signin')->name('auth.signin');
-    Route::view('signup', 'mosaic.signup')->name('auth.signup');
-    
-    
-    
 });
+
+Route::middleware(['auth', 'can:manage-finance'])->name('finance.')->group(function(){
+    Route::view('credit-cards', 'mosaic.credit-cards')->name('cards');
+    Route::view('transaction-details', 'mosaic.transaction-details')->name('details');
+    Route::view('transactions', 'mosaic.transactions')->name('transactions');
+});
+Route::view('reset-password', 'mosaic.reset-password')->name('auth.reset-password');
+Route::view('signin', 'mosaic.signin')->name('auth.signin');
+Route::view('signup', 'mosaic.signup')->name('auth.signup');

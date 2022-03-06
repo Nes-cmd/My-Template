@@ -44,7 +44,7 @@
                                         <path class="dd gz" :class="page.startsWith('dashboard-') &amp;&amp; 'text-indigo-600'" d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z"></path>
                                         <path
                                             class="dd yt"
-                                            :class="page.startsWith('dashboard-') &amp;&amp; 'text-indigo-200'"
+                                            
                                             d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z"
                                         ></path>
                                     </svg>
@@ -104,7 +104,7 @@
                                     </a>
                                 </li>
                                 <li class="rx wg">
-                                    <a class="block yt hover--text-slate-200 b_ we lz" href="{{ url('invoices')}}">
+                                    <a class="block yt hover--text-slate-200 b_ we lz" href="{{ url('invoices') }}">
                                         <span class="text-sm gm tek ttr 2xl:opacity--100 wn {{ Route::currentRouteName() == 'ecommerce.invoices'?'text-indigo-500':'' }}">Invoices</span>
                                     </a>
                                 </li>
@@ -213,6 +213,7 @@
                             </ul>
                         </div>
                     </li>
+                    @can('manage-finance')
                     <li class="vx vc rounded-sm im wg" :class="{ 'bg-slate-900': {{ explode('.',Route::currentRouteName())[0] == 'finance'?'true':'false' }} }" x-data="{ open: false }" x-init="$nextTick(() => open = {{ explode('.',Route::currentRouteName())[0] == 'finance'?'true':'false' }})">
                         <a class="block yn xh lz b_ we" :class="page.startsWith('finance-') &amp;&amp; 'hover--text-slate-200'" href="#0" @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true">
                             <div class="flex items-center fh">
@@ -257,7 +258,8 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="vx vc rounded-sm im wg" :class="page === 'messages' &amp;&amp; 'bg-slate-900'">
+                    @endcan
+                    <li class="vx vc rounded-sm im wg {{Route::currentRouteName()=='messages'?'bg-slate-900':''}}">
                         <a class="block yn xh lz b_ we" :class="page === 'messages' &amp;&amp; 'hover--text-slate-200'" href="{{ url('messages')}}">
                             <div class="flex items-center fh">
                                 <div class="al flex items-center">
@@ -279,7 +281,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="vx vc rounded-sm im wg" :class="page === 'tasks' &amp;&amp; 'bg-slate-900'">
+                    <li class="vx vc rounded-sm im wg {{Route::currentRouteName()=='tasks'?'bg-slate-900':''}}">
                         <a class="block yn xh lz b_ we" :class="page === 'tasks' &amp;&amp; 'hover--text-slate-200'" href="{{ url('tasks')}}">
                             <div class="flex items-center">
                                 <svg class="af on oz" viewBox="0 0 24 24">
@@ -291,7 +293,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="vx vc rounded-sm im wg" :class="page === 'inbox' &amp;&amp; 'bg-slate-900'">
+                    <li class="vx vc rounded-sm im wg {{Route::currentRouteName()=='inbox'?'bg-slate-900':''}}">
                         <a class="block yn xh lz b_ we" :class="page === 'inbox' &amp;&amp; 'hover--text-slate-200'" href="{{ url('inbox')}}">
                             <div class="flex items-center">
                                 <svg class="af on oz" viewBox="0 0 24 24">
@@ -306,7 +308,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="vx vc rounded-sm im wg" :class="page === 'calendar' &amp;&amp; 'bg-slate-900'">
+                    <li class="vx vc rounded-sm im wg {{Route::currentRouteName()=='calendar'?'bg-slate-900':''}}">
                         <a class="block yn xh lz b_ we" :class="page === 'calendar' &amp;&amp; 'hover--text-slate-200'" href="{{ url('calendar')}}">
                             <div class="flex items-center">
                                 <svg class="af on oz" viewBox="0 0 24 24">
@@ -317,7 +319,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="vx vc rounded-sm im wg" :class="page === 'campaigns' &amp;&amp; 'bg-slate-900'">
+                    <li class="vx vc rounded-sm im wg {{Route::currentRouteName()=='campaigns'?'bg-slate-900':''}}">
                         <a class="block yn xh lz b_ we" :class="page === 'campaigns' &amp;&amp; 'hover--text-slate-200'" href="{{ url('campaigns')}}">
                             <div class="flex items-center">
                                 <svg class="af on oz" viewBox="0 0 24 24">

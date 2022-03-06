@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 
+use Laravel\Fortify\Contracts\LoginResponse;
+
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -48,5 +51,15 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView('auth.login');
         Fortify::registerView('auth.register');
+
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
+            public function toResponse($request)
+            {
+                if(auth()->user()->hasRole('customer')){
+                    return redirect('/');
+                }
+                return redirect('/dashboard');
+            }
+        });
     }
 }

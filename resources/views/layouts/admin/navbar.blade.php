@@ -259,7 +259,7 @@
                     <button class="inline-flex justify-center items-center kr" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
                         <img class="un or rounded-full" src="images/user-avatar-32.png" width="32" height="32" alt="User" />
                         <div class="flex items-center lz">
-                            <span class="lz r_ text-sm gm ko">Acme Inc.</span> <svg class="w-3 h-3 af rq dd yt" viewBox="0 0 12 12"><path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z"></path></svg>
+                            <span class="lz r_ text-sm gm ko">{{ auth()->user()->name}}</span> <svg class="w-3 h-3 af rq dd yt" viewBox="0 0 12 12"><path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z"></path></svg>
                         </div>
                     </button>
                     <div
@@ -276,8 +276,8 @@
                         x-cloak=""
                     >
                         <div class="mf ma vx rx cm border-slate-200">
-                            <div class="gm text-slate-800">Acme Inc.</div>
-                            <div class="gp text-slate-500 gw">Administrator</div>
+                            <div class="gm text-slate-800">{{auth()->user()->name}}</div>
+                            <div class="gp text-slate-500 gw">{{auth()->user()->roles()->first()->name}}</div>
                         </div>
                         <ul>
                             <li><a class="gm text-sm text-indigo-500 xu flex items-center vk vx" href="{{ url('settings')}}" @click="open = false" @focus="open = true" @focusout="open = false">Settings</a></li>
