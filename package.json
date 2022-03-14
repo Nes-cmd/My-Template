@@ -12,6 +12,8 @@
     "devDependencies": {
         "autoprefixer": "^10.4.2",
         "axios": "^0.25",
+        "gulp": "^4.0.2",
+        "gulp-concat": "^2.6.1",
         "laravel-mix": "^6.0.43",
         "lodash": "^4.17.19",
         "postcss": "^8.4.7",
