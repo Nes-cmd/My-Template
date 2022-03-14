@@ -4,7 +4,8 @@
         <meta charset="utf-8" />
         <title>Mosaic HTML Demo - Home</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link href="admin/css/cssof_index.css" rel="stylesheet" />
+        <link href="css/app.css" rel="stylesheet" />
+        <!-- <link href="admin/css/cssof_index.css" rel="stylesheet" /> -->
     </head>
 
     <body

@@ -13,7 +13,8 @@
       type="image/x-icon"
     />
     <link rel="stylesheet" href="guest/animate.css" />
-    <link rel="stylesheet" href="guest/app.css" />
+    <!-- <link rel="stylesheet" href="guest/app.css" /> -->
+    <link rel="stylesheet" href="css/app.css" />
     
 
     <!-- ==== WOW JS ==== -->
