@@ -25,7 +25,7 @@
   </head>
   <body>
     <!-- ====== Navbar Section statr -->
-    @include('layouts.guests.navbar')
+    @include('layouts.guests.new-navbar')
     <!-- ====== Navbar Section End -->
     
     @yield('contents')
@@ -68,6 +68,9 @@
     <!-- ====== All Scripts -->
 
     <script src="js/main.js"></script>
+    <!-- Js for nav bar -->
+    <script src="admin/js/jsof_index.js"></script>
+    <!--  -->
     <script>
       // ==== for menu scroll
       const pageLink = document.querySelectorAll(".ud-menu-scroll");

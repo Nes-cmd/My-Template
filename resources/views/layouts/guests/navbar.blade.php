@@ -9,13 +9,13 @@
         z-40
         w-full
         flex
-        items-center 
+        items-center
       "
-     >
+    >
       <div class="container">
         <div class="flex -mx-4 items-center justify-between relative">
           <div class="px-4 w-60 max-w-full">
-            <a href="{{ route('landing')}}" class="navbar-logo w-full block py-5">
+            <a href="index.html" class="navbar-logo w-full block py-5">
               <img
                 src="assets/images/logo/logo-white.svg"
                 alt="logo"
@@ -74,7 +74,7 @@
                 <ul class="blcok lg:flex">
                   <li class="relative group">
                     <a
-                      href="{{ route('landing')}}"
+                      href="#home"
                       class="
                         ud-menu-scroll
                         text-base text-dark
@@ -115,7 +115,7 @@
                   </li>
                   <li class="relative group">
                     <a
-                      href="{{ route('pricing')}}"
+                      href="#pricing"
                       class="
                         ud-menu-scroll
                         text-base text-dark
@@ -269,7 +269,7 @@
                         Contact Page
                       </a>
                       <a
-                        href="{{ route('blog-grid')}}"
+                        href="blog-grids.html"
                         class="
                           block
                           text-sm text-body-color
@@ -282,7 +282,7 @@
                         Blog Grid Page
                       </a>
                       <a
-                        href="{{ route('blog-detail')}}"
+                        href="blog-details.html"
                         class="
                           block
                           text-sm text-body-color
@@ -294,8 +294,32 @@
                       >
                         Blog Details Page
                       </a>
-                      
-                     
+                      <a
+                        href="signup.html"
+                        class="
+                          block
+                          text-sm text-body-color
+                          rounded
+                          hover:text-primary
+                          py-[10px]
+                          px-4
+                        "
+                      >
+                        Sign Up Page
+                      </a>
+                      <a
+                        href="signin.html"
+                        class="
+                          block
+                          text-sm text-body-color
+                          rounded
+                          hover:text-primary
+                          py-[10px]
+                          px-4
+                        "
+                      >
+                        Sign In Page
+                      </a>
                       <a
                         href="404.html"
                         class="
@@ -314,10 +338,23 @@
                 </ul>
               </nav>
             </div>
-            
-            <div class="sm:flex justify-end pr-16 lg:pr-0">
+            <div class="sm:flex justify-end hidden pr-16 lg:pr-0">
               <a
-                href="{{ route('login')}}"
+                href="signin.html"
+                class="
+                  text-base
+                  font-medium
+                  text-white
+                  hover:opacity-70
+                  py-3
+                  px-7
+                  loginBtn
+                "
+              >
+                Sign In
+              </a>
+              <a
+                href="signup.html"
                 class="
                   text-base
                   font-medium
@@ -332,7 +369,7 @@
                   ease-in-out
                 "
               >
-                Sign In
+                Sign Up
               </a>
             </div>
           </div>
