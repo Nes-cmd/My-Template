@@ -60,6 +60,44 @@
                             </ul>
                         </div>
                     </li>
+                    @can('manage-users')
+                    <li class="vx vc rounded-sm im wg" :class="{ 'bg-slate-900': {{ explode('.',Route::currentRouteName())[0] == 'users'?'true':'false' }} }" x-data="{ open: false }" x-init="$nextTick(() => open = {{ explode('.',Route::currentRouteName())[0] == 'users'?'true':'false' }})">
+                        <a class="block yn xh lz b_ we" :class="page.startsWith('ecommerce-') &amp;&amp; 'hover--text-slate-200'" href="#0" @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true">
+                            <div class="flex items-center fh">
+                                <div class="flex items-center">
+                                    <svg class="af on oz" viewBox="0 0 24 24">
+                                        <path class="dd yt" :class="page.startsWith('ecommerce-') &amp;&amp; 'text-indigo-300'" d="M13 15l11-7L11.504.136a1 1 0 00-1.019.007L0 7l13 8z"></path>
+                                        <path class="dd be" :class="page.startsWith('ecommerce-') &amp;&amp; '!text-indigo-600'" d="M13 15L0 7v9c0 .355.189.685.496.864L13 24v-9z"></path>
+                                        <path class="dd gz" :class="page.startsWith('ecommerce-') &amp;&amp; 'text-indigo-500'" d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z"></path>
+                                    </svg>
+                                    <span class="text-sm gm ml-3 tek ttr 2xl:opacity--100 wn">Manage Users</span>
+                                </div>
+                                <div class="flex af r_ tek ttr 2xl:opacity--100 wn">
+                                    <svg class="w-3 h-3 af rq dd yt" :class="open &amp;&amp; 'a_ ak'" viewBox="0 0 12 12"><path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z"></path></svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="zq tez 2xl:block">
+                            <ul class="mr io" :class="!open &amp;&amp; 'hidden'" x-cloak="">
+                                <li class="rx wg">
+                                    <a class="block yt hover--text-slate-200 b_ we lz" href="{{ url('users')}}">
+                                        <span class="text-sm gm tek ttr 2xl:opacity--100 wn {{ Route::currentRouteName() == 'users.users'?'text-indigo-500':'' }}">Users</span>
+                                    </a>
+                                </li>
+                                <li class="rx wg">
+                                    <a class="block yt hover--text-slate-200 b_ we lz" href="{{ url('roles')}}">
+                                        <span class="text-sm gm tek ttr 2xl:opacity--100 wn {{ Route::currentRouteName() == 'users.roles'?'text-indigo-500':'' }}">Roles</span>
+                                    </a>
+                                </li>
+                                <li class="rx wg">
+                                    <a class="block yt hover--text-slate-200 b_ we lz" href="{{ url('permissions')}}">
+                                        <span class="text-sm gm tek ttr 2xl:opacity--100 wn {{ Route::currentRouteName() == 'users.permissions'?'text-indigo-500':'' }}">Permissions</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    @endcan
                     <li class="vx vc rounded-sm im wg" :class="{ 'bg-slate-900': {{ explode('.',Route::currentRouteName())[0] == 'ecommerce'?'true':'false' }} }" x-data="{ open: false }" x-init="$nextTick(() => open = {{ explode('.',Route::currentRouteName())[0] == 'ecommerce'?'true':'false' }})">
                         <a class="block yn xh lz b_ we" :class="page.startsWith('ecommerce-') &amp;&amp; 'hover--text-slate-200'" href="#0" @click.prevent="sidebarExpanded ? open = !open : sidebarExpanded = true">
                             <div class="flex items-center fh">

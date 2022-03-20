@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Role;
+use App\Models\Permission;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -48,14 +49,29 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         // dd($this->roles()->where('name', 'manager')->first());
-        if($this->roles()->where('name', $role)->first()){
+        if($this->roles()->where('slug', $role)->first()){
             return true;
         } 
         return false;
     }
+    public function permissions()
+    {
+        return $this->hasMany(Permission::class);
+    }
+    public function hasPermission($name)
+    {
+        $permission = Permission::where('slug', $name)->first();
+        if($permission){
+            $found = \DB::table('user_permission')->where('permission_id', $permission->id)->andWhere('user_id', auth()->user()->id)->first();
+            if($found){
+                return true;
+            }
+        }
+        return false;
+    }
     public function hasRoles($roles)
     {
-        if($this->roles()->whereIn('name', $roles)->first()){
+        if($this->roles()->whereIn('slug', $roles)->first()){
             return true;
         } 
         return false;

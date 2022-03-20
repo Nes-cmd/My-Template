@@ -2,17 +2,16 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::view('/dashboard', 'dashboard')->middleware('auth')->name('dashboard.main');
+Route::view('/dashboard', 'dashboard')->middleware('auth','stakeholder')->name('dashboard.main');
 
 Route::view('/','landing')->name('landing');
 Route::view('pricing', 'pages.pricing')->name('pricing');
 Route::view('blog-grid', 'pages.blog-grid')->name('blog-grid');
 Route::view('blog-detail', 'pages.blog-detail')->name('blog-detail');
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth','stakeholder')->group(function(){
     Route::view('analytics', 'mosaic.analytics')->name('dashboard.analytics');
     Route::view('fintech', 'mosaic.fintech')->name('dashboard.fintech');
-
     Route::view('cart-2', 'mosaic.cart-2')->name('ecommerce.cart-2');
     Route::view('cart-3', 'mosaic.cart-3')->name('ecommerce.cart-3');
     Route::view('cart', 'mosaic.cart')->name('ecommerce.cart');
@@ -23,7 +22,6 @@ Route::middleware('auth')->group(function(){
     Route::view('shop', 'mosaic.shop')->name('ecommerce.shop');
     Route::view('product', 'mosaic.product')->name('ecommerce.product');
     Route::view('pay', 'mosaic.pay')->name('ecommerce.pay');
-
     Route::view('component-accordion', 'mosaic.component-accordion')->name('component.accordion');
     Route::view('component-alert', 'mosaic.component-alert')->name('component.alert');
     Route::view('component-avatar', 'mosaic.component-avatar')->name('component.avatar');
@@ -45,7 +43,7 @@ Route::middleware('auth')->group(function(){
     Route::view('meetups', 'mosaic.meetups')->name('community.meetups');
     Route::view('profile', 'mosaic.profile')->name('community.profile');
     Route::view('users-tabs', 'mosaic.users-tabs')->name('community.users-tabs');
-    Route::view('users-tiles', 'mosaic.user-tiles')->name('community.users-tiles');
+    Route::view('users-tiles', 'mosaic.users-tiles')->name('community.users-tiles');
 
     Route::view('messages', 'mosaic.messages')->name('messages');
     Route::view('tasks', 'mosaic.tasks')->name('tasks');
@@ -76,6 +74,13 @@ Route::middleware(['auth', 'can:manage-finance'])->name('finance.')->group(funct
     Route::view('credit-cards', 'mosaic.credit-cards')->name('cards');
     Route::view('transaction-details', 'mosaic.transaction-details')->name('details');
     Route::view('transactions', 'mosaic.transactions')->name('transactions');
+});
+Route::middleware('auth','can:manage-users')->group(function(){
+    Route::get('/roles', [\App\Http\Controllers\Users\UserController::class, 'roles'])->name('users.roles');
+    Route::get('/users', [\App\Http\Controllers\Users\UserController::class, 'index'])->name('users.users');
+    Route::get('/permissions', [\App\Http\Controllers\Users\UserController::class, 'permissions'])->name('users.permissions');
+    Route::post('/permission/store', [\App\Http\Controllers\Users\UserController::class, 'storePermission'])->name('users.permission.store');
+    Route::post('/role/store', [\App\Http\Controllers\Users\UserController::class, 'storeRole'])->name('users.role.store');
 });
 Route::view('reset-password', 'mosaic.reset-password')->name('auth.reset-password');
 Route::view('signin', 'mosaic.signin')->name('auth.signin');

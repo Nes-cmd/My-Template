@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'password' => '$2y$10$HQA6uxXGTAZPJityLRZqf.oZXXZ.N/a1FHmTsC6IEKc75C5maGuBG', //password
             'email_verified_at' => '2021-12-30 19:59:40',
         ]);
-        $role1 = Role::where('name', 'admin')->first()->id;
+        $role1 = Role::where('slug', 'admin')->first()->id;
         $user1->roles()->attach($role1);
 
         $user2 = User::create([
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'password' => '$2y$10$HQA6uxXGTAZPJityLRZqf.oZXXZ.N/a1FHmTsC6IEKc75C5maGuBG', //password
             'email_verified_at' => '2021-12-30 19:59:40',
         ]);
-        $role2 = Role::where('name', 'manager')->first()->id;
+        $role2 = Role::where('slug', 'manager')->first()->id;
         $user2->roles()->attach($role2);
 
         $user3 = User::create([
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),//'$2y$10$HQA6uxXGTAZPJityLRZqf.oZXXZ.N/a1FHmTsC6IEKc75C5maGuBG', //password
             'email_verified_at' => '2021-12-30 19:59:40',
         ]);
-        $role3 = Role::where('name', 'customer')->first()->id;
+        $role3 = Role::where('slug', 'customer')->first()->id;
         $user3->roles()->attach($role3);
     }
 }

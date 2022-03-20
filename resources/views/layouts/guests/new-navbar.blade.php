@@ -663,6 +663,7 @@
                         </div>
                     </div>
                 </div>
+                @auth
                 <div class="td inline-flex" x-data="{ open: false }">
                     <button class="un or flex items-center justify-center hp xr b_ we rounded-full" :class="{ 'hv': open }" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
                         <span class="tc">Notifications</span>
@@ -717,6 +718,7 @@
                         </ul>
                     </div>
                 </div>
+                @endauth
                 <div class="td inline-flex" x-data="{ open: false }">
                     <button class="un or flex items-center justify-center hp xr b_ we rounded-full" :class="{ 'hv': open }" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
                         <span class="tc">Info</span>
@@ -769,19 +771,19 @@
                 </div>
                 <hr class="oj on hv" />
                 <div class="td inline-flex" x-data="{ open: false }">
-                    @guest
-                    <button class="inline-flex justify-center items-center kr" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
-                        <img class="un or rounded-full" src="images/user-avatar-32.png" width="32" height="32" alt="User" />
-                        <div class="flex items-center lz">
-                            <span class="lz r_ text-sm gm ko">Acc</span> <svg class="w-3 h-3 af rq dd yt" viewBox="0 0 12 12"><path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z"></path></svg>
-                        </div>
-                    </button>
-                    @endguest
+                   
                     @auth
                     <button class="inline-flex justify-center items-center kr" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
                         <img class="un or rounded-full" src="images/user-avatar-32.png" width="32" height="32" alt="User" />
                         <div class="flex items-center lz">
                             <span class="lz r_ text-sm gm ko">{{ auth()->user()->name}}</span> <svg class="w-3 h-3 af rq dd yt" viewBox="0 0 12 12"><path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z"></path></svg>
+                        </div>
+                    </button>
+                    @else
+                    <button class="inline-flex justify-center items-center kr" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
+                        <img class="un or rounded-full" src="images/user-avatar-32.png" width="32" height="32" alt="User" />
+                        <div class="flex items-center lz">
+                            <span class="lz r_ text-sm gm ko">Acc</span> <svg class="w-3 h-3 af rq dd yt" viewBox="0 0 12 12"><path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z"></path></svg>
                         </div>
                     </button>
                     @endauth
