@@ -61,5 +61,11 @@ class FortifyServiceProvider extends ServiceProvider
                 return redirect('/dashboard');
             }
         });
+        // $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
+        //     public function toResponse()
+        //     {
+        //         return redirect('/');
+        //     }
+        // });
     }
 }
